@@ -1,22 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>Superhero Index</title>
 </head>
-<body>
+
+<body style="background-size:cover;background-image:url('{% static 'comics-hulk-wallpaper-preview.jpeg' %}');">
+
     <h1>List of Heroes</h1>
     <ul>
         {% for hero in all_heroes %}
         <li> <h2>{{hero.name}} - <br>
-            <div style="font-size:12px">
-                    <a href="{% url 'superheroes:detail' hero.id %}">Details</a><br>
-                    <a href="{% url 'superheroes:edit' hero.id %}">Edit</a><br>
-                    <a href="{% url 'superheroes:delete' hero.id %}">Delete</a>
+            <div style="font-size:12px; color:grey">
+                <a href="{% url 'superheroes:detail' hero.id %}">Details</a><br>
+                <a href="{% url 'superheroes:edit' hero.id %}">Edit</a><br>
+                <a href="{% url 'superheroes:delete' hero.id %}">Delete</a>
             </div>
         </h2> </li>
+
         {% endfor %}
     </ul>
     <a href="{% url 'superheroes:create' %}">Add New Hero</a>
